@@ -20,7 +20,6 @@ function useCat() {
     }, 1000);
 
     const RefreshInterval = setInterval(() => {
-      console.log('test');
       fetchCat();
     }, (MAX_SECONDS + 1) * 1000);
 
@@ -42,6 +41,9 @@ function useCat() {
       ...state,
       isAutoRefresh: !state.isAutoRefresh
     }));
+    if (catSettings.isAutoRefresh) {
+      setSeconds(MAX_SECONDS);
+    }
   }
 
   function getCat(data: CatData) {
